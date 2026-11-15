@@ -2,7 +2,7 @@
 #include "SDK.hpp"
 #include "Tools.h"
 // #include "definitions.h"
-#include "KittyMemory/MemoryPatch.h"
+// #include "KittyMemory/MemoryPatch.h"
 #include "android_native_app_glue.h"
 #include "Dobby/Dobby.h"
 #include <android/native_window_jni.h>
