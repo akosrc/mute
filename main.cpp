@@ -6,7 +6,7 @@
 // #include "android_native_app_glue.h"
 #include "ESP/Dobby.h"
 // #include <android/native_window_jni.h>
-#include <android/log.h>
+// #include <android/log.h>
 using namespace SDK;
 using namespace std;
 #include "UE4.h"
