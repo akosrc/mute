@@ -1,7 +1,7 @@
 #include "Includes.h"
 #include "SDK.hpp"
 #include "Tools.h"
-#include "definitions.h"
+// #include "definitions.h"
 #include "KittyMemory/MemoryPatch.h"
 #include "android_native_app_glue.h"
 #include "Dobby/Dobby.h"
