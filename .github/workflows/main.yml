@@ -1,0 +1,40 @@
+name: Build Dylib Only
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch: # Manuel çalıştırma butonu
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Install Theos
+        run: |
+          export THEOS=$HOME/theos
+          git clone --recursive https://github.com/theos/theos.git $THEOS
+          echo "THEOS=$THEOS" >> $GITHUB_ENV
+          echo "$THEOS/bin" >> $GITHUB_PATH
+
+      - name: Install ldid (İmzalama Aracı)
+        run: |
+          curl -LO https://github.com/ProcursusTeam/ldid/releases/download/v2.1.5-procursus7/ldid_macosx_arm64
+          chmod +x ldid_macosx_arm64
+          mv ldid_macosx_arm64 $THEOS/bin/ldid
+
+      - name: Build Dylib Only
+        run: |
+          make clean
+          make all
+
+      - name: Find and Upload Dylib
+        uses: actions/upload-artifact@v4
+        with:
+          name: Yeni-Src-Dylib
+          # Theos derleme sonrası dylib dosyasını .theos/obj/ klasörüne çıkarır
+          path: .theos/obj/*.dylib
+          if-no-files-found: error
