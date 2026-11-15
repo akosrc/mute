@@ -10,7 +10,7 @@
 using namespace SDK;
 using namespace std;
 #include "UE4.h"
-#include "UI/UI.h"
+// #include "UI/UI.h"
 android_app *g_App = 0;
 int screenWidth = -1, glWidth, screenHeight = -1, glHeight;
 
